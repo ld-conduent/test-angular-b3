@@ -1,18 +1,33 @@
 <h2>Products</h2>
 
 <div *ngFor="let product of products">
-  <h3>
-    <a [title]="product.name + ' details'">
-      {{ product.name }}
-    </a>
-  </h3>
+  <br />
+  <a
+    style="font-weight: bold; font-size: 20px"
+    [title]="product.name + ' details'"
+  >
+    {{ product.name }}
+  </a>
+  <span [title]="product.name + ' details'">
+    (Price: {{ product.price | currency: 'USD':true:'1.2-2' }})</span
+  >
+  <br />
 
-  <p *ngIf="product.description">Description: {{ product.description }}</p>
+  <span *ngIf="product.description"
+    >Description: {{ product.description }}</span
+  >
 
-  <button (click)="share()"><i class="material-icons" style="color:blue;">share</i>&nbsp;&nbsp;&nbsp;Share</button>
+  <br />
+
+  <button (click)="share()">
+    <i class="material-icons" style="color:blue;">share</i
+    >&nbsp;&nbsp;&nbsp;Share
+  </button>
 
   <app-product-alerts [product]="product" (notify)="onNotify()">
   </app-product-alerts>
+
+  <br />
 </div>
 
 <!-- 

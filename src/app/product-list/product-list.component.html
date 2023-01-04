@@ -9,9 +9,10 @@
 
   <p *ngIf="product.description">Description: {{ product.description }}</p>
 
-  <button (click)="share()">Share</button>
+  <button (click)="share()"><i class="material-icons" style="color:blue;">share</i>&nbsp;&nbsp;&nbsp;Share</button>
 
-  <app-product-alerts [product]="product"> </app-product-alerts>
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
 </div>
 
 <!-- 

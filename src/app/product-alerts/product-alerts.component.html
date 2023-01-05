@@ -1,4 +1,10 @@
-&nbsp;
 <span *ngIf="product.price < 500">
-  <button (click)="notify.emit()"><i class="material-icons" style="color:white; font-weight: bold;">check</i>&nbsp;&nbsp;&nbsp;Notify Me</button>
+  &nbsp;
+  <a
+    [title]="' Check '"
+    (click)="notify.emit()"
+    class="material-icons"
+    style="color:green; font-weight: bold; font-size: 20px"
+    >check</a
+  >
 </span>

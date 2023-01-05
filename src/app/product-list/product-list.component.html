@@ -1,16 +1,27 @@
 <h2>Products</h2>
 
-<div *ngFor="let product of products">
-  <br />
+<div *ngFor="let product of products; index as productId">
   <a
     style="font-weight: bold; font-size: 20px"
     [title]="product.name + ' details'"
+    [routerLink]="['/products', productId]"
   >
     {{ product.name }}
   </a>
-  <span [title]="product.name + ' details'">
-    (Price: {{ product.price | currency: 'USD':true:'1.2-2' }})</span
+  <a style="font-size: 15px">
+    ({{ product.price | currency: 'USD':true:'1.2-2' }})</a
   >
+  &nbsp;
+  <a
+    [title]="' Share '"
+    (click)="share()"
+    class="material-icons"
+    style="color:gray; font-weight: bold; font-size: 18px"
+    >share</a
+  >
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
+
   <br />
 
   <span *ngIf="product.description"
@@ -18,15 +29,6 @@
   >
 
   <br />
-
-  <button (click)="share()">
-    <i class="material-icons" style="color:blue;">share</i
-    >&nbsp;&nbsp;&nbsp;Share
-  </button>
-
-  <app-product-alerts [product]="product" (notify)="onNotify()">
-  </app-product-alerts>
-
   <br />
 </div>
 

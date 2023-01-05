@@ -3,14 +3,15 @@
 <div *ngFor="let product of products; index as productId">
   <a
     style="font-weight: bold; font-size: 20px"
-    [title]="product.name + ' details'"
+    [title]="
+      product.name +
+      ', Price: ' +
+      (product.price | currency: 'USD':true:'1.2-2')
+    "
     [routerLink]="['/products', productId]"
   >
     {{ product.name }}
   </a>
-  <a style="font-size: 15px">
-    ({{ product.price | currency: 'USD':true:'1.2-2' }})</a
-  >
   &nbsp;
   <a
     [title]="' Share '"
